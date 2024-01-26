@@ -31,6 +31,6 @@ RUN npm install
 
 COPY . /app
 
-ENV PORT=3000
+ENV PORT=5000
 
 CMD ["npm", "run", "dev"]
