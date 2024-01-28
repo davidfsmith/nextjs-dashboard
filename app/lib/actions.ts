@@ -1,8 +1,8 @@
 'use server';
 
-import { z } from "zod";
+import { z } from 'zod';
 import { sql } from '@vercel/postgres';
-import { revalidatePath } from "next/cache";
+import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
 const FormSchema = z.object({
@@ -32,8 +32,8 @@ export async function createInvoice(formData: FormData) {
     `;
   } catch (error) {
     return {
-      message: 'Database error: Failed to create invoice.'
-    }
+      message: 'Database error: Failed to create invoice.',
+    };
   }
 
   revalidatePath('/dashboard/invoices');
@@ -56,8 +56,8 @@ export async function updateInvoice(id: string, formData: FormData) {
     `;
   } catch (error) {
     return {
-      message: 'Database error: Failed to uodate invoice.'
-    }
+      message: 'Database error: Failed to uodate invoice.',
+    };
   }
 
   revalidatePath('/dashboard/invoices');
@@ -71,8 +71,8 @@ export async function deleteInvoice(id: string) {
     await sql`DELETE FROM invoices WHERE id = ${id}`;
   } catch (error) {
     return {
-      message: 'Database error: Failed to delete invoice'
-    }
+      message: 'Database error: Failed to delete invoice',
+    };
   }
   revalidatePath('/dashboard/invoices');
 }
